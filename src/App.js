@@ -1,20 +1,24 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css';
-import mountain from './images/image.svg'
+import Uploader from './components/Uploader/Uploader';
 
 function App() {
+  const [upload, setUpload] = useState(false)
+  const toggleUpload = () => {
+    setUpload(true)
+  }
+
+  console.log(upload)
   return (
     <div className="app">
-      <div className="app__card">
-        <h1>Upload your image</h1>
-        <p className="app__cardSub">File should be Jpeg, Png,...</p>
-        <div className="app__uploader">
-          <img src={mountain} alt="illustration"/>
-          <p>Drag & Drop your image here</p>
-        </div>
-        <p className="app__cardOr">Or</p>
-        <button>Choose a file</button>
-      </div>
+      {
+        (!upload) ? (
+          <Uploader toggle={toggleUpload}/>
+        ) : (
+          <h1>hi</h1>
+        )
+      }
+      
     </div>
   );
 }
